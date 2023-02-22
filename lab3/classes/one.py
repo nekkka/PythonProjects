@@ -1,9 +1,8 @@
 class Strings:
-    def __init__(self):
-        self.str = str(input())
+   ##   self.str = str(input())
     
     def print_string(self):
-        print(self.str.upper())
+        print('cbcb')
 
 
 p1=Strings()

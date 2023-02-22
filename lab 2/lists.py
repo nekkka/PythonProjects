@@ -21,4 +21,3 @@ print(fruits[2:5])
 
 fruits = ["apple", "banana", "cherry"]
 print(len(fruits))
-
