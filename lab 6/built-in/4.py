@@ -1,10 +1,10 @@
 import math
 import time
 
-# Wait for 1000 milliseconds (1 second)
-time.sleep(1)
+a = int(input("Sample Input: "))
+s = int(input())
+time.sleep(s/1000)
 
-a = int(input())
 result = math.sqrt(a)
 
-print(result)
+print("Square root of {} after {} miliseconds is {}".format(a ,s, result))
