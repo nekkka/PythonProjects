@@ -1,5 +1,5 @@
-from functools import reduce
-my_list = [1 , 2 , 3, 4, 5]
-
-print (reduce((lambda x, y: x * y), my_list))
-
+a = list(map(int, input().split()))
+product = 1
+for i in range(len(a)):
+    product *= a[i]
+print(product)
