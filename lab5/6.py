@@ -3,5 +3,5 @@
 import re
 
 txt="jab bsdhf a/bb akjabbbh..kdhnkcn,cki nbkaabbbjbh"
-x = re.sub(r"[ \,\.]", ":", txt)
+x = re.sub(r"[\s \,\.]", ":", txt)
 print(x)
