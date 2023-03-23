@@ -8,7 +8,6 @@ pygame.display.set_caption("MOOOOOOVE")
 running = True
 x = 30
 y = 30
-
 ball_Change = 3
 
 clock = pygame.time.Clock()
