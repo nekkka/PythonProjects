@@ -1,13 +1,15 @@
 import pygame
+import os
+os.chdir('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/')
 
 pygame.init()
 screen = pygame.display.set_mode((350, 500))
 pygame.display.set_caption('Player')
-button_clicked_image = pygame.image.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/play.png')
-button_image = pygame.image.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/pause.png')
-button_next = pygame.image.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/next.png')
-button_back = pygame.image.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/back.png')
-oblozhka = pygame.image.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/oblozhka.png')
+button_clicked_image = pygame.image.load('play.png')
+button_image = pygame.image.load('pause.png')
+button_next = pygame.image.load('next.png')
+button_back = pygame.image.load('back.png')
+oblozhka = pygame.image.load('oblozhka.png')
 
 
 button_pos = (150, 400)
@@ -29,10 +31,10 @@ while True:
             if button_rect.collidepoint(event.pos):
                 button_clicked = not button_clicked
             if button_rect_next.collidepoint(event.pos):
-                pygame.mixer.music.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/4.mp3')
+                pygame.mixer.music.load('4.mp3')
                 pygame.mixer.music.play()
             if button_rect_back.collidepoint(event.pos):
-                pygame.mixer.music.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/2.mp3')
+                pygame.mixer.music.load('2.mp3')
                 pygame.mixer.music.play()
 
         
@@ -54,7 +56,7 @@ while True:
 
     if not button_clicked:
         screen.blit(button_clicked_image, button_pos)
-        pygame.mixer.music.load('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/3.mp3')
+        pygame.mixer.music.load('3.mp3')
         pygame.mixer.music.play()
     else:
         screen.blit(button_image, button_pos)
