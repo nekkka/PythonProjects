@@ -31,6 +31,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+    
     min, sec = get_time()
 
     min_angle = min * -6 
@@ -39,6 +40,7 @@ while True:
 
     min_hand_rotated, min_hand_rect = rotate_hand(min_hand_img, min_angle)
     sec_hand_rotated, sec_hand_rect = rotate_hand(sec_hand_img, sec_angle)
+
     clock_img = pygame.transform.scale(clock_img, (800, 800))
     screen.blit(clock_img, (0, 0))
 
@@ -49,6 +51,7 @@ while True:
 
     sec_hand_x = 400 - sec_hand_rect.width // 2
     sec_hand_y = 400 - sec_hand_rect.height // 2
+    
     screen.blit(sec_hand_rotated, (sec_hand_x, sec_hand_y))
 
 

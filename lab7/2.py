@@ -36,6 +36,8 @@ while True:
             if button_rect_back.collidepoint(event.pos):
                 pygame.mixer.music.load('2.mp3')
                 pygame.mixer.music.play()
+        # elif event.type == pygame.KEYDOWN:
+        #     if  pygame.K_LEFT
 
         
     screen.fill((255, 255, 0))
