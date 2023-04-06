@@ -48,6 +48,25 @@ class Coins(pygame.sprite.Sprite):
         surface.blit(self.image, self.rect)
 
 
+
+class Meshok(pygame.sprite.Sprite):
+      def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("meshok.png")
+        self.image = pygame.transform.scale(self.image, (40, 50))
+        self.rect = self.image.get_rect()
+        self.rect.center=(random.randint(40, width - 40),0) 
+ 
+      def move(self):
+        self.rect.move_ip(0,10)
+        if (self.rect.bottom > 600):
+            self.rect.top = 0
+            self.rect.center = (random.randint(30, 370), 0)
+ 
+      def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
@@ -74,16 +93,21 @@ score = 0
 P1 = Player()
 E1 = Enemy()
 C1 = Coins()
+M1 = Meshok()
 enemies = pygame.sprite.Group()
 enemies.add(E1)
 
 coins = pygame.sprite.Group()
 coins.add(C1)
+meshok = pygame.sprite.Group()
+meshok.add(M1)
+
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(P1)
 all_sprites.add(E1)
 all_sprites.add(C1)
+all_sprites.add(M1)
 
 
 def draw_text(surf, text, size, x, y):
@@ -110,12 +134,19 @@ while running:
     E1.draw(screen)
     C1.move()
     C1.draw(screen)
+    M1.move()
+    M1.draw(screen)
     
     # Check for collisions
     if pygame.sprite.spritecollideany(P1, coins):
         score += 1
         for coin in coins:
             coin.rect.center = (random.randint(30, 370), 0)
+
+    if pygame.sprite.spritecollideany(P1, meshok):
+        score += 5
+        for meshok in meshok:
+            meshok.rect.center = (random.randint(30, 370), 0)
     
     # Draw score text
     draw_text(screen, f"Coins: {score}", 25, 200, 10)
