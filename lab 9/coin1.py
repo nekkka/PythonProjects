@@ -14,21 +14,23 @@ running = True
 fps = pygame.time.Clock()
 
 class Enemy(pygame.sprite.Sprite):
-      def __init__(self):
+    def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("enemy.png")
         self.image = pygame.transform.scale(self.image, (30, 70))
         self.rect = self.image.get_rect()
         self.rect.center=(random.randint(40, width - 40),0) 
+        self.speed = 7
  
-      def move(self):
-        self.rect.move_ip(0,10)
+    def move(self):
+        self.rect.move_ip(0, self.speed)
         if (self.rect.bottom > 600):
             self.rect.top = 0
             self.rect.center = (random.randint(30, 370), 0)
  
-      def draw(self, surface):
+    def draw(self, surface):
         surface.blit(self.image, self.rect)
+
 
 class Coins(pygame.sprite.Sprite):
     def __init__(self):
@@ -74,6 +76,7 @@ class Player(pygame.sprite.Sprite):
  
 
 score = 0
+speed1 = 1
 P1 = Player()
 E1 = Enemy()
 
@@ -99,6 +102,7 @@ def draw_text(surf, text, size, x, y):
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     surf.blit(text_surface, text_rect)
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -118,16 +122,20 @@ while running:
     C1.move()
     C1.draw(screen)
 
-    
     # Check for collisions
     if pygame.sprite.spritecollideany(P1, coins):
-        score += C1.weight #???
+        score += C1.weight 
         for coin in coins:
             coin.rect.center = (random.randint(30, 370), 0)
+        if score >= 10:
+            for enemy in enemies:
+                enemy.speed = 15
+            speed1 = 2
 
-    
+
     # Draw score text
     draw_text(screen, f"Coins: {score}", 25, 200, 10)
+    draw_text(screen, f"Speed lvl: {speed1}", 19, 200, 40)
     
     # Check for game over
     if pygame.sprite.spritecollideany(P1, enemies):
@@ -142,6 +150,3 @@ while running:
           
     pygame.display.update()
     fps.tick(60)
-
-        
-                
