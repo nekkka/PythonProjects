@@ -1,6 +1,8 @@
 import math
-
 import pygame
+import os
+os.chdir('C:/Users/ASUS/Desktop/pp2/lab 8/images')
+
 
 pygame.init() #init
 running = True
@@ -28,14 +30,19 @@ width = 1
 
 
 font = pygame.font.SysFont('Verdana', 15)  # font
+oblozhka = pygame.image.load('paint2.png')
+oblozhka = pygame.transform.scale(oblozhka, (1000, 600))
+screen.blit(oblozhka, (0 , 0))
 
 pygame.draw.line(screen, pygame.Color('purple'), (0, 31), (WINDOW_WIDTH, 31), 5)   # splitting line
 
+
 while running:
-    pygame.draw.rect(screen, WHITE, (0, 0, WINDOW_WIDTH, 30))  # updating status
+    pygame.draw.rect(screen, WHITE, (0, 0, WINDOW_WIDTH, 30))  # updating status    
     screen.blit(font.render(f'Mode: {shape}', True, BLACK), (10, 10))  # current shape
     screen.blit(font.render(f'Width: {width}', True, BLACK), (310, 10))  # current width
     screen.blit(font.render(f'Color: {color}', True, BLACK), (610, 10))  # current color
+    
     for event in pygame.event.get():
         pressed = pygame.key.get_pressed()
         ctrl_pressed = pressed[pygame.K_RCTRL] or pressed[pygame.K_LCTRL]  # press ctrl
