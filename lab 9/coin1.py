@@ -5,14 +5,13 @@ from pygame.locals import *
 import os
 os.chdir('C:/Users/ASUS/Desktop/pp2/lab 8/images')
 
-pygame.init()
+pygame.init() #init
 width = 400
-height = 600
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("GO GO GO")
+height = 600 #sizes
+screen = pygame.display.set_mode((width, height)) #window
+pygame.display.set_caption("GO GO GO") #name of window
 running = True
-fps = pygame.time.Clock()
-
+fps = pygame.time.Clock() 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
