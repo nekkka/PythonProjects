@@ -1,4 +1,6 @@
 import pygame
+from pygame.locals import *
+
 import os
 os.chdir('C:/Users/ASUS/Desktop/pp2/lab7/mp_lab7/')
 
@@ -31,15 +33,30 @@ while True:
             if button_rect.collidepoint(event.pos):
                 button_clicked = not button_clicked
             if button_rect_next.collidepoint(event.pos):
+                if pygame.mixer.music.get_busy():
+                    pygame.mixer.music.stop()
                 pygame.mixer.music.load('4.mp3')
                 pygame.mixer.music.play()
             if button_rect_back.collidepoint(event.pos):
+                if pygame.mixer.music.get_busy():
+                    pygame.mixer.music.stop()
                 pygame.mixer.music.load('2.mp3')
                 pygame.mixer.music.play()
-        # elif event.type == pygame.KEYDOWN:
-        #     if  pygame.K_LEFT
+        elif event.type == pygame.KEYDOWN:
+            if event.key == K_UP:
+                pygame.mixer.music.load('3.mp3')
+                pygame.mixer.music.play()
+            elif event.key == K_RIGHT:
+                if pygame.mixer.music.get_busy():
+                    pygame.mixer.music.stop()
+                pygame.mixer.music.load('4.mp3')
+                pygame.mixer.music.play()
+            elif event.key == K_LEFT:
+                if pygame.mixer.music.get_busy():
+                    pygame.mixer.music.stop()
+                pygame.mixer.music.load('2.mp3')
+                pygame.mixer.music.play()
 
-        
     screen.fill((255, 255, 0))
     button_image = pygame.transform.scale(button_image, (button_width, button_height))
     button_clicked_image = pygame.transform.scale(button_clicked_image, (button_width, button_height))

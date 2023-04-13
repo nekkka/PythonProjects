@@ -22,7 +22,7 @@ font_small = pygame.font.SysFont('Verdana', 18)  # small font
 SCORE = 0   # score
 LEVEL = 0   # level
 
-pygame.display.set_caption('uSnake')  # name of window
+pygame.display.set_caption('Snakeeee')  # name of window
 
 POSITIONS_OF_THE_WALL = ('top', 'left', 'bottom', 'right')  # tuple of wall positions
 
@@ -114,7 +114,7 @@ class Food:
 
 
 class Snake:
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         self.body = [Particle(BLOCK_SIZE, BLOCK_SIZE, generate_random_color())]
         self.tail_color = generate_random_color()  # all blocks of tail should have the same color
         self.add_tail()  # add two extra blocks to the head
@@ -145,7 +145,7 @@ class Snake:
             self.head().y = WINDOW_HEIGHT
 
     def draw(self):
-        for i, particle in enumerate(self.body):
+        for particle in self.body:
             particle.draw()
 
     def add_tail(self):  # increase the length of snake
