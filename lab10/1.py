@@ -1,5 +1,8 @@
 import csv
 import psycopg2
+import os
+
+os.chdir('C:/Users/ASUS/Desktop/pp2/lab10')
 
 # Connect to the PostgreSQL database
 conn = psycopg2.connect(database="postgres", user="postgres", password="anel2004", host="localhost", port="5433")
@@ -17,7 +20,7 @@ cur.execute("""
 conn.commit()
 
 
-with open('phonebook.csv', 'r') as file:
+with open('phb.csv', 'r') as file:
     reader = csv.reader(file)
     # Skip the header row
     next(reader)

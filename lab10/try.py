@@ -1,5 +1,5 @@
 import psycopg2
-from config import host,user,password,database
+# from config import host,user,password,database
 select_all = "SELECT * FROM USERS"
 
 try:
